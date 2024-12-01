@@ -30,9 +30,9 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
 1. **SARSA**:
    - SARSA es un algoritmo *on-policy*, lo que significa que actualiza los valores$Q(s, a)$basándose en la política actual.
    - Ecuación de actualización:
-    $$
+   $$
      Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \left[ r_t + \gamma Q_t(s_{t+1}, a_{t+1}) - Q_t(s_t, a_t) \right]
-    $$
+   $$
      Donde:
      -$\alpha$: Tasa de aprendizaje.
      -$\gamma$: Factor de descuento.
@@ -41,9 +41,9 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
 2. **Q-Learning**:
    - Q-Learning es un algoritmo *off-policy* que busca la política óptima sin seguir necesariamente la política actual.
    - Ecuación de actualización:
-    $$
+   $$
      Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \left[ r_t + \gamma \max_b Q_t(s_{t+1}, b) - Q_t(s_t, a_t) \right]
-    $$
+   $$
 
 ### **Estrategias de Exploración**
 1. **ε-greedy**:
@@ -51,9 +51,9 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
    - Con probabilidad$\epsilon$, selecciona una acción aleatoria para explorar.
 2. **Softmax**:
    - Asigna probabilidades a cada acción según sus valores$Q(s, a)$:
-    $$
+   $$
      P(a_i|s) = \frac{e^{\frac{Q(s, a_i)}{\tau}}}{\sum_j e^{\frac{Q(s, a_j)}{\tau}}}
-    $$
+   $$
      Donde$\tau$controla el nivel de exploración.
 
 ### **Evaluación y Rendimiento**
