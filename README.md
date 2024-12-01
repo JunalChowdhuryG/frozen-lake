@@ -20,41 +20,41 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
 ### **Elementos del Aprendizaje por Refuerzo**
 1. **Agente**: Entidad que toma decisiones.
 2. **Entorno**: Sistema en el que opera el agente.
-3. **Estados ($ S $)**: Configuraciones posibles del entorno.
-4. **Acciones ($ A $)**: Conjunto de decisiones posibles para el agente.
-5. **Recompensas ($ R $)**: Retroalimentación numérica que guía al agente.
-6. **Política ($ \pi $)**: Estrategia que sigue el agente para tomar decisiones.
+3. **Estados ($S$)**: Configuraciones posibles del entorno.
+4. **Acciones ($A$)**: Conjunto de decisiones posibles para el agente.
+5. **Recompensas ($R$)**: Retroalimentación numérica que guía al agente.
+6. **Política ($\pi$)**: Estrategia que sigue el agente para tomar decisiones.
 
 ### **Algoritmos de Aprendizaje**
 
 1. **SARSA**:
-   - SARSA es un algoritmo *on-policy*, lo que significa que actualiza los valores $ Q(s, a) $ basándose en la política actual.
+   - SARSA es un algoritmo *on-policy*, lo que significa que actualiza los valores$Q(s, a)$basándose en la política actual.
    - Ecuación de actualización:
-     $$
+    $$
      Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \left[ r_t + \gamma Q_t(s_{t+1}, a_{t+1}) - Q_t(s_t, a_t) \right]
-     $$
+    $$
      Donde:
-     - $ \alpha $: Tasa de aprendizaje.
-     - $ \gamma $: Factor de descuento.
-     - $ r_t $: Recompensa en el paso $ t $.
+     -$\alpha$: Tasa de aprendizaje.
+     -$\gamma$: Factor de descuento.
+     -$r_t$: Recompensa en el paso$t$.
 
 2. **Q-Learning**:
    - Q-Learning es un algoritmo *off-policy* que busca la política óptima sin seguir necesariamente la política actual.
    - Ecuación de actualización:
-     $$
+    $$
      Q_{t+1}(s_t, a_t) \leftarrow Q_t(s_t, a_t) + \alpha \left[ r_t + \gamma \max_b Q_t(s_{t+1}, b) - Q_t(s_t, a_t) \right]
-     $$
+    $$
 
 ### **Estrategias de Exploración**
 1. **ε-greedy**:
-   - Con probabilidad $ 1-\epsilon $, el agente elige la mejor acción conocida.
-   - Con probabilidad $ \epsilon $, selecciona una acción aleatoria para explorar.
+   - Con probabilidad$1-\epsilon$, el agente elige la mejor acción conocida.
+   - Con probabilidad$\epsilon$, selecciona una acción aleatoria para explorar.
 2. **Softmax**:
-   - Asigna probabilidades a cada acción según sus valores $ Q(s, a) $:
-     $$
+   - Asigna probabilidades a cada acción según sus valores$Q(s, a)$:
+    $$
      P(a_i|s) = \frac{e^{\frac{Q(s, a_i)}{\tau}}}{\sum_j e^{\frac{Q(s, a_j)}{\tau}}}
-     $$
-     Donde $ \tau $ controla el nivel de exploración.
+    $$
+     Donde$\tau$controla el nivel de exploración.
 
 ### **Evaluación y Rendimiento**
 1. Para evaluar el aprendizaje, es esencial contar los éxitos en ventanas de episodios (por ejemplo, 100).
@@ -75,7 +75,7 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
 ### **Ejercicio 2: SARSA**
 - **Objetivo**:
   - Implementar el algoritmo SARSA con exploración **ε-greedy**.
-  - Actualizar una tabla $ Q $ de valores para cada estado y acción.
+  - Actualizar una tabla$Q$de valores para cada estado y acción.
   - Medir el rendimiento contando los episodios exitosos en ventanas de 100 episodios.
   - Considerar el problema resuelto si la tasa de éxito supera el 76%.
 
@@ -91,13 +91,13 @@ Para simplificar el aprendizaje de los algoritmos, utilizaremos el entorno **Fro
 ### **Ejercicio 4: Exploración Softmax**
 - **Objetivo**:
   - Implementar una estrategia de exploración Softmax.
-  - Asignar probabilidades de selección de acciones proporcionalmente a sus valores $ Q(s, a) $.
+  - Asignar probabilidades de selección de acciones proporcionalmente a sus valores$Q(s, a)$.
 
 ---
 
 ### **Ejercicio 5: Decaimiento de ε**
 - **Objetivo**:
-  - Diseñar un esquema para reducir $ \epsilon $ con el tiempo.
+  - Diseñar un esquema para reducir$\epsilon$con el tiempo.
   - Evaluar cómo mejora la política aprendida en comparación con la política de exploración.
 
 ---
